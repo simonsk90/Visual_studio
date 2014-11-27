@@ -8,6 +8,8 @@ namespace WindowsFormsApplication2
         public CreateActivity()
         {
             InitializeComponent();
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "MMMM dd " +  " kl: " + "HH:mm";
         }
 
         private void SaveActivity(object sender, EventArgs e)
@@ -24,6 +26,7 @@ namespace WindowsFormsApplication2
             string lector = textLector.Text;
             string address = textAddress.Text;
             string city = textCity.Text;
+            string description = richTextBoxDescription.Text;
             DateTime date = dateTimePicker.Value;
         }
 
@@ -39,10 +42,6 @@ namespace WindowsFormsApplication2
             }
             return pass;
         }
-
-        
-
-    }
 
     
 }
