@@ -9,7 +9,7 @@ namespace MvcApplication1.Models
     {
         public int ID { get; set; }
         public String name { get; set; }
-        public String Description { get; set; }
+        public String description { get; set; }
 
         public News()
         {
