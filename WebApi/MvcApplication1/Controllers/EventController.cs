@@ -8,33 +8,35 @@ using System.Web.Http;
 
 namespace MvcApplication1.Controllers
 {
-    public class ActivityController : ApiController
+    public class EventController : ApiController
     {
-
-        // GET api/Activity/
+        // GET api/<controller>
         public void Get()
         {
-            //Retuner alle aktiviteter
+            //Retunere alle events
+        }
+
+        // GET api/<controller>/5
+        public void Get(int id)
+        {
+            //retunere alle events ud fra et aktivitetsID
         }
 
         // POST api/<controller>
-        public void Post([FromBody] Activity activity)
+        public void Post([FromBody]Event _event)
         {
-            //add activity til database
-            
+            //Add ny event i databasen
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] Activity activity)
+        public void Put(int id, [FromBody]Event _event)
         {
-            //Update i database hvor id er = ID
+            //Update i databasen hvor 
         }
 
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
-            //Slet activity hvor id = id
         }
-
     }
 }

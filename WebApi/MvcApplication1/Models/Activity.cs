@@ -17,7 +17,7 @@ namespace MvcApplication1.Models
 
         }
 
-        public Activity(int ID, String title, String description, Event _event)
+        public Activity(String title, String description, Event _event)
         {
             this.ID = ID;
             this.title = title;

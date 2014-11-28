@@ -129,7 +129,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Activity.cs" />
-    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Evaluation.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Location.cs" />

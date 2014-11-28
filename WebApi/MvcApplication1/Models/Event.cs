@@ -10,7 +10,7 @@ namespace MvcApplication1.Models
         public DateTime time { get; set; }
         public Location location { get; set; }
         public String lecturer { get; set; }
-        public Attendance attendance { get; set; }
+        private List<User> attendanceList;
 
         public Event()
         {
