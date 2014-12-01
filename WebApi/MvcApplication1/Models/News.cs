@@ -20,7 +20,7 @@ namespace MvcApplication1.Models
         {
             this.ID = ID;
             this.name = name;
-            this.Description = desc;
+            this.description = desc;
         }
 
     }
