@@ -130,6 +130,7 @@
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="DB\DBActivity.cs" />
     <Compile Include="DB\DBConnection.cs" />
+    <Compile Include="DB\DBEvent.cs" />
     <Compile Include="DB\DBLocation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
