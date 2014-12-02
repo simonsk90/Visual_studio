@@ -58,7 +58,7 @@ namespace MvcApplication1.DB
 
             while (dr.HasRows)
             {
-                l = new Location(Convert.ToInt32(dr["ID"]), dr["name"].ToString(),
+                Location l = new Location(Convert.ToInt32(dr["ID"]), dr["name"].ToString(),
                 dr["address"].ToString(), Convert.ToInt32(dr["zipcode"]), dr["city"].ToString());
                 allLocations.Add(l);
             }
