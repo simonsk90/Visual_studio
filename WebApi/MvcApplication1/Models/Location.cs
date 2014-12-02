@@ -7,6 +7,7 @@ namespace MvcApplication1.Models
 {
     public class Location
     {
+            public int ID { get; set; }
             public String name { get; set; }
             public String address { get; set; }
             public int zipcode { get; set; }

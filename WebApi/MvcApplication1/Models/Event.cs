@@ -7,7 +7,8 @@ namespace MvcApplication1.Models
 {
     public class Event
     {
-        public DateTime time { get; set; }
+        public int ID { get; set; }
+        public DateTime date { get; set; }
         public Location location { get; set; }
         public String lecturer { get; set; }
         public Activity acti { get; set; }
@@ -18,9 +19,18 @@ namespace MvcApplication1.Models
 
         }
 
-        public Event(DateTime time, Location location, String lecturer, Activity acti)
+        public Event(int ID, DateTime date, Location location, String lecturer, Activity acti)
         {
-            this.time = time;
+            this.ID = ID;
+            this.date = date;
+            this.location = location;
+            this.lecturer = lecturer;
+            this.acti = acti;
+        }
+
+        public Event(DateTime date, Location location, String lecturer, Activity acti)
+        {
+            this.date = date;
             this.location = location;
             this.lecturer = lecturer;
             this.acti = acti;
