@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using MvcApplication1.DB;
+using MvcApplication1.Models;
 
 namespace MvcApplication1.Controllers
 {
@@ -12,6 +14,9 @@ namespace MvcApplication1.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
+            DBActivity dba = new DBActivity();
+            dba.addActivity(new Activity("title","yolo Marck er en fag"));
+
             return new string[] { "value1", "value2" };
         }
 

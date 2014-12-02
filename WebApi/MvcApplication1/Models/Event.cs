@@ -10,6 +10,7 @@ namespace MvcApplication1.Models
         public DateTime time { get; set; }
         public Location location { get; set; }
         public String lecturer { get; set; }
+        public Activity acti { get; set; }
         private List<User> attendantsList = new List<User>();
 
         public Event()
@@ -17,11 +18,12 @@ namespace MvcApplication1.Models
 
         }
 
-        public Event(DateTime time, Location location, String lecturer)
+        public Event(DateTime time, Location location, String lecturer, Activity acti)
         {
             this.time = time;
             this.location = location;
             this.lecturer = lecturer;
+            this.acti = acti;
         }
 
         public List<User> getAttendantsList()

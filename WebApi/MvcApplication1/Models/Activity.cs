@@ -10,19 +10,17 @@ namespace MvcApplication1.Models
         public int ID { get; set; }
         public String title { get; set; }
         public String description { get; set; }
-        public Event _event { get; set; }
 
         public Activity()
         {
 
         }
 
-        public Activity(String title, String description, Event _event)
+        public Activity(String title, String description)
         {
             this.ID = ID;
             this.title = title;
             this.description = description;
-            this._event = _event;
         }
 
     }

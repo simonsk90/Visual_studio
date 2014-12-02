@@ -13,7 +13,7 @@ namespace MvcApplication1.DB
     public class DBConnection
     {
         //here we put our connectionstring from our app.config in a string
-        private string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        private string connectionString = "server=balder.ucn.dk;database=dmaa0213_4;User id=dmaa0213_4;Password=MaaGodt";
 
         //method to open connection for our SQL
         public SqlConnection GetConnection()
