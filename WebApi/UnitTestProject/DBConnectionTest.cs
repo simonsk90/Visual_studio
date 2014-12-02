@@ -31,5 +31,14 @@ namespace UnitTestProject
             Activity a = dba.getActivityByID(2);
             Console.WriteLine(a.title);
         }
+
+
+        public void TestGetEvent()
+        {
+            DBEvent dbe = new DBEvent();
+            dbe.addEvent(new Event(new DateTime(), new Location("Hey", "fagvej", 8900, "YoBy"), "Marcks mor", new Activity(89,"Neeeej", "Blaaa","fucker,popcorn,#OgMinMaaaajd")));
+            Event e = dbe.getEventByID(0);
+            Console.WriteLine(e.lecturer + " lecturer og " + e.date + " date");
+        }
     }
 }
