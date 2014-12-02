@@ -38,7 +38,7 @@ namespace MvcApplication1.DB
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
-            
+
             Event e = new Event();
             int activitiID;
             int locationID;
