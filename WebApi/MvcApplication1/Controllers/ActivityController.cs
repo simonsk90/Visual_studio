@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using MvcApplication1.DB;
 
 namespace MvcApplication1.Controllers
 {
@@ -12,8 +13,11 @@ namespace MvcApplication1.Controllers
     {
 
         // GET api/Activity/
-        public void Get()
+        public Activity Get(int ID)
         {
+            DBActivity dba = new DBActivity();    
+            return dba.getActivityByID(ID);
+
             //Retuner alle aktiviteter
         }
 

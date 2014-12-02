@@ -32,22 +32,36 @@ namespace MvcApplication1.DB
 
         public Activity getActivityByID(int aID)
         {
-
+            Activity a = new Activity();
             string query = "SELECT * FROM ScrumActivity WHERE ID = " + aID;
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();      
 
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            //int id = Convert.ToInt32(dr["ID"]);
-            //String title = dr["title"].ToString();
-
-            Activity a = new Activity(Convert.ToInt32(dr["ID"]), dr["title"].ToString(), dr["description"].ToString(), dr["tags"].ToString());
-
-            return a;
+            while (dr.Read())
+            {
+                a = new Activity(Convert.ToInt32(dr["ID"]), dr["title"].ToString(),
+                dr["description"].ToString(), dr["tags"].ToString());
+                Console.WriteLine(a.title);
+            }
+            return a;        
         }
 
+        public List<Activity> getAllActivities()
+        {
+            List<Activity> allActivities = new List<Activity>();
+            string query = "SELECT * FROM ScrumActivity";
+            SqlConnection con = dbc.GetConnection();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
 
-
+            while (dr.HasRows)
+            {
+                Activity a = new Activity(Convert.ToInt32(dr["ID"]), dr["title"].ToString(),
+                dr["description"].ToString(), dr["tags"].ToString());         
+                allActivities.Add(a);
+            }
+            return allActivities;
+        }
     }
 }

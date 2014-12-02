@@ -30,6 +30,8 @@ namespace UnitTestProject
             DBActivity dba = new DBActivity();
             Activity a = dba.getActivityByID(2);
             Console.WriteLine(a.title);
+            Assert.AreNotEqual(a, null);
+            
         }
     }
 }

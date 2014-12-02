@@ -7,10 +7,6 @@ namespace MvcApplication1.Models
 {
     public class Activity
     {
-        private object p1;
-        private object p2;
-        private object p3;
-        private object p4;
 
         public int ID { get; set; }
         public String title { get; set; }

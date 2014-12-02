@@ -14,6 +14,12 @@ namespace MvcApplication1
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //config.Routes.MapHttpRoute(
+            //    name: "ApiByAction",
+            //    routeTemplate: "api/{controller}/{action}",
+            //    defaults: new { action = "Get" }
+            //);
         }
     }
 }
