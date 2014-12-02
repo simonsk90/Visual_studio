@@ -26,6 +26,11 @@ namespace MvcApplication1.Controllers
             return "value";
         }
 
+        public string Get(String s)
+        {
+            return "get method with string";
+        }
+
         // POST api/values
         public void Post([FromBody]string value)
         {
