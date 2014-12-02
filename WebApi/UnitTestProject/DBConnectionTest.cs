@@ -19,9 +19,17 @@ namespace UnitTestProject
         [TestMethod]
         public void TestAddActivity()
         {
+            //DBActivity dba = new DBActivity();
+            //Activity a = new Activity("title", "DESC");
+            //dba.addActivity(a);
+        }
+
+        [TestMethod]
+        public void testGetActivity()
+        {
             DBActivity dba = new DBActivity();
-            Activity a = new Activity("title", "DESC");
-            dba.addActivity(a);
+            Activity a = dba.getActivityByID(2);
+            Console.WriteLine(a.title);
         }
     }
 }
