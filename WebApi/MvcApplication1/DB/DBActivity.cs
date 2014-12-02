@@ -13,13 +13,12 @@ namespace MvcApplication1.DB
 
         public void addActivity(Activity a)
         {
-            string query = "INSERT INTO ScrumActivity (title, description, tags) VALUES (@title, @description, 'HEJ')";
+            string query = "INSERT INTO ScrumActivity (title, description, tags) VALUES (@title, @description, 'TAG')";
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
 
             cmd.Parameters.AddWithValue("@title", a.title);
             cmd.Parameters.AddWithValue("@description", a.description);
-           // cmd.Parameters.AddWithValue("@Tags", "din mor er fed");
 
             try
             {
@@ -31,6 +30,22 @@ namespace MvcApplication1.DB
             }
         }
 
+        public Activity getActivityByID(int aID)
+        {
+
+            string query = "SELECT * FROM ScrumActivity WHERE ID = " + aID;
+            SqlConnection con = dbc.GetConnection();
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            //int id = Convert.ToInt32(dr["ID"]);
+            //String title = dr["title"].ToString();
+
+            Activity a = new Activity(Convert.ToInt32(dr["ID"]), dr["title"].ToString(), dr["description"].ToString(), dr["tags"].ToString());
+
+            return a;
+        }
 
 
 

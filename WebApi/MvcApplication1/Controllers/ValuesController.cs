@@ -12,13 +12,13 @@ namespace MvcApplication1.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
-        {
-            DBActivity dba = new DBActivity();
-            dba.addActivity(new Activity("title","yolo Marck er en fag"));
+        //public IEnumerable<string> Get()
+        //{
+        //    //DBActivity dba = new DBActivity();
+        //    //dba.addActivity(new Activity("title","yolo Marck er en fag"));
 
-            return new string[] { "value1", "value2" };
-        }
+        //    //return new string[] { "value1", "value2" };
+        //}
 
         // GET api/values/5
         public string Get(int id)
