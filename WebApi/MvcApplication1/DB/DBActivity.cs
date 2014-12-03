@@ -13,12 +13,13 @@ namespace MvcApplication1.DB
 
         public void addActivity(Activity a)
         {
-            string query = "INSERT INTO ScrumActivity (title, description, tags) VALUES (@title, @description, 'TAG')";
+            string query = "INSERT INTO ScrumActivity (title, description, tags) VALUES (@title, @description, @tag)";
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
 
             cmd.Parameters.AddWithValue("@title", a.title);
             cmd.Parameters.AddWithValue("@description", a.description);
+            cmd.Parameters.AddWithValue("@tag", a.tags);
 
             try
             {

@@ -11,20 +11,18 @@ namespace MvcApplication1.Controllers
 {
     public class ActivityController : ApiController
     {
-
+        DBActivity dba = new DBActivity();  
         // GET api/Activity/
         public Activity Get(int ID)
-        {
-            DBActivity dba = new DBActivity();    
+        {    
             return dba.getActivityByID(ID);
-
-            //Retuner alle aktiviteter
         }
 
         // POST api/<controller>
         public void Post([FromBody] Activity activity)
         {
             //add activity til database
+            dba.addActivity(activity);
             
         }
 
