@@ -47,6 +47,18 @@ namespace UnitTestProject
         }
 
         [TestMethod]
+        public async Task TestLocationController()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:51938/");
+
+                var a = new Location() { ID = 322, name = "testName", address = "testAddress", zipcode = 9999, city = "testCity" };
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Location", a);
+            }
+        }
+
+        [TestMethod]
         public void TestDBCon()
         {
             var dbcon = new DBConnection();
@@ -69,6 +81,16 @@ namespace UnitTestProject
             Console.WriteLine(a.title);
             Assert.AreNotEqual(a, null);
             
+        }
+
+        [TestMethod]
+        public void testGetLocation()
+        {
+            DBLocation dba = new DBLocation();
+            Location a = dba.getLocationByID(2);
+            Console.WriteLine(a.name);
+            Assert.AreNotEqual(a, null);
+
         }
 
         [TestMethod]
