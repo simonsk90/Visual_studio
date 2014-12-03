@@ -20,7 +20,10 @@ namespace MvcApplication1.Models
 
         public Activity(int ID, String title, String description, String tags)
         {
-            this.ID = ID;
+            if (ID != 1337)
+            {
+                this.ID = ID;
+            }
             this.title = title;
             this.description = description;
             this.tags = tags;
