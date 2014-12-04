@@ -1,4 +1,5 @@
-﻿using MvcApplication1.Models;
+﻿using MvcApplication1.DB;
+using MvcApplication1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,28 +11,29 @@ namespace MvcApplication1.Controllers
 {
     public class EventController : ApiController
     {
+        DBEvent dbe = new DBEvent();
+
         // GET api/<controller>
-        public void Get()
+        public IEnumerable<Event> Get()
         {
-            //Retunere alle events
+            return dbe.getAllEvents();
         }
 
         // GET api/<controller>/5
-        public void Get(int id)
+        public Event Get(int ID)
         {
-            //retunere alle events ud fra et aktivitetsID
+            return dbe.getEventByID(ID);
         }
 
         // POST api/<controller>
         public void Post([FromBody]Event _event)
         {
-            //Add ny event i databasen
+            dbe.addEvent(_event);
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]Event _event)
+        public void Put(int id, [FromBody]string value)
         {
-            //Update i databasen hvor 
         }
 
         // DELETE api/<controller>/5

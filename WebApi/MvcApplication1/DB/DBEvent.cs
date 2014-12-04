@@ -10,14 +10,16 @@ namespace MvcApplication1.DB
     public class DBEvent
     {
         DBConnection dbc = new DBConnection();
+        DBActivity dba = new DBActivity();
+        DBLocation dbl = new DBLocation();
 
         public void addEvent(Event e)
         {
-            string query = "INSERT INTO ScrumEvent (date, lecture, activityID, locationID) VALUES (@date, @lecture, @activityID, @locationID)";
+            string query = "INSERT INTO ScrumEvent (eventDate, lecture, activityID, locationID) VALUES (@eventDate, @lecture, @activityID, @locationID)";
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
 
-            cmd.Parameters.AddWithValue("@date", e.date);
+            cmd.Parameters.AddWithValue("@eventDate", e.date.ToString());
             cmd.Parameters.AddWithValue("@lecture", e.lecturer);
             cmd.Parameters.AddWithValue("@activityID", e.acti.ID);
             cmd.Parameters.AddWithValue("@locationID", e.location.ID);
@@ -34,29 +36,55 @@ namespace MvcApplication1.DB
 
         public Event getEventByID(int ID)
         {
-            string query = "SELECT ID, date, lecture, activityID, locationID from ScrumEvent WHERE ID=" + ID;
+            string query = "SELECT ID, eventDate, lecture, activityID, locationID from ScrumEvent WHERE ID=" + ID;
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
 
             Event e = new Event();
-            int activitiID;
-            int locationID;
+            int acivityID = 0;
+            int locationID = 0;
             while (dr.HasRows)
             {
-                e.ID = dr.GetInt32(0);
-                e.date = dr.GetDateTime(1);
-                e.lecturer = dr.GetString(2);
-                activitiID = dr.GetInt32(3);
-                locationID = dr.GetInt32(4);
+                e.ID = Convert.ToInt32(dr["id"]);
+                e.date = Convert.ToDateTime(dr["eventDate"]);
+                e.lecturer = dr["lecturer"].ToString();
+                acivityID = Convert.ToInt32(dr["activityID"]);
+                locationID = Convert.ToInt32(dr["locationID"]);
             }
-            //Activity a = dba.getActivityByID(acivityID);
-            //Location l = dbl.getLocationByID(locationID);
-            //e.acti = a;
-            //e.location = l;
+            Activity a = dba.getActivityByID(acivityID);
+            Location l = dbl.getLocationByID(locationID);
+            e.acti = a;
+            e.location = l;
 
             return e;
         }
 
+        public List<Event> getAllEvents()
+        {
+            List<Event> eList = new List<Event>();
+            string query = "SELECT * FROM ScrumEvent";
+            SqlConnection con = dbc.GetConnection();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.HasRows)
+            {
+                Event e = new Event();
+                int acivityID = 0;
+                int locationID = 0;
+
+                e.ID = Convert.ToInt32(dr["id"]);
+                e.date = Convert.ToDateTime(dr["eventDate"]);
+                e.lecturer = dr["lecturer"].ToString();
+                acivityID = Convert.ToInt32(dr["activityID"]);
+                locationID = Convert.ToInt32(dr["locationID"]);
+                e.acti = dba.getActivityByID(acivityID);
+                e.location = dbl.getLocationByID(locationID);
+                eList.Add(e);
+            }
+
+            return eList;
+        }
     }
 }

@@ -80,6 +80,46 @@ namespace UnitTestProject
             //Console.WriteLine(e.lecturer + " lecturer og " + e.date + " date");
         }
 
+        //[TestMethod]
+        //public async Task TestAddEventController()
+        //{
+        //    DBActivity dba = new DBActivity();
+        //    DBLocation dbl = new DBLocation();
+        //    using (var client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri("http://localhost:51938/");
+
+        //        Location l = dbl.getLocationByID(1);
+        //        Activity a = dba.getActivityByID(2);
+        //        DateTime dt = new DateTime(1993, 2, 2, 4, 44, 7);
+        //        var e = new Event() { date = dt, location = l, lecturer = "marcks mor", acti = a };
+        //        HttpResponseMessage response = await client.PostAsJsonAsync("api/Event", e);
+        //    }
+        //}
+
+        //[TestMethod]
+        //public void TestAddEventDB()
+        //{
+        //    DBActivity dba = new DBActivity();
+        //    DBLocation dbl = new DBLocation();
+        //    DBEvent dbe = new DBEvent();
+        //    Location l = dbl.getLocationByID(1);
+        //    Activity a = dba.getActivityByID(2);
+        //    DateTime dt = new DateTime(1993, 2, 2, 4, 44, 7);
+        //    Event eN = new Event();
+        //    eN.date = dt;
+        //    eN.lecturer = "Marcks mor";
+        //    eN.location = l;
+        //    eN.acti = a;
+        //    //Event e = new Event(dt, l, "Marcks mor", a);
+        //    dbe.addEvent(eN);
+        //}
+
+        //[TestMethod]
+        //public async Task TestGetEventController()
+        //{
+
+        //}
         
     }
 }

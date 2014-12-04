@@ -1,0 +1,20 @@
+diff a/WebApi/UnitTestProject/DBConnectionTest.cs b/WebApi/UnitTestProject/DBConnectionTest.cs	(rejected hunks)
+@@ -47,6 +47,18 @@
+         }
+ 
+         [TestMethod]
++        public async Task TestLocationController()
++        {
++            using (var client = new HttpClient())
++            {
++                client.BaseAddress = new Uri("http://localhost:51938/");
++
++                var a = new Location() { ID = 322, name = "testName", address = "testAddress", zipcode = 9999, city = "testCity" };
++                HttpResponseMessage response = await client.PostAsJsonAsync("api/Location", a);
++            }
++        }
++
++        [TestMethod]
+         public void TestDBCon()
+         {
+             var dbcon = new DBConnection();
