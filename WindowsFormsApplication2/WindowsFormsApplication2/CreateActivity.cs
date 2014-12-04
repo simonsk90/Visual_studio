@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication2
@@ -14,22 +15,40 @@ namespace WindowsFormsApplication2
 
         private void SaveActivity(object sender, EventArgs e)
         {
+            if (
+                textTitle.Text != "" &&
+                textTag.Text != "" &&
+                richTextBoxDescription.Text != ""
+                )
+            {
+                string title = textTitle.Text;
+                string tags = textTag.Text;
+                string description = richTextBoxDescription.Text;
+                List<string> choice = new List<string>();
 
-            string title = textTitle.Text;
-            string tags = textTag.Text;
-            //int spots = 0;
+                if (cbMotor.Checked && !cbFood.Checked)
+                {
+                    choice.Add(cbMotor.Text);
 
-            //if (checkIfNumber(textSpots.Text))
-            //{
-            //    spots = Convert.ToInt32(textSpots.Text);
-            //}
-            //string lector = textLector.Text;
-            //string address = textAddress.Text;
-            //string city = textCity.Text;
-            //string description = richTextBoxDescription.Text;
-            //DateTime date = dateTimePicker.Value;
+                }
+
+                if (!cbMotor.Checked && cbFood.Checked)
+                {
+                    choice.Add(cbFood.Text);
+                }
+
+                string tagString = "";
+                foreach (string s in choice)
+                {
+                    tagString = tagString + "," + s;
+                }
+                lblErrorMsg.Text = "Aktivitet oprettet";
+            }
+            else
+            {
+                lblErrorMsg.Text = "Du skal sikre dig, at alle felter er udfyldt";
+            }
         }
-
         private bool checkIfNumber(string txt) //Check to see if string only contains digits
         {
             bool pass = true;
@@ -42,8 +61,7 @@ namespace WindowsFormsApplication2
             }
             return pass;
         }
-
-
+    
     }
 
 }
