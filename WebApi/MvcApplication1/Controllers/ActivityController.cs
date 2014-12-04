@@ -18,6 +18,11 @@ namespace MvcApplication1.Controllers
             return dba.getActivityByID(ID);
         }
 
+        public List<Activity> Get()
+        {
+            return dba.getAllActivities();
+        }
+
         // POST api/<controller>
         public void Post([FromBody] Activity activity)
         {

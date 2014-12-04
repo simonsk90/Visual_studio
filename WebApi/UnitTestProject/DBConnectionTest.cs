@@ -7,12 +7,42 @@ using MvcApplication1.Controllers;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace UnitTestProject
 {
     [TestClass]
     public class DBConnectionTest
     {
+        [TestMethod]
+        public async Task TestGetAllActivitiesController()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:51938/");
+                //client.DefaultRequestHeaders.Accept.Clear();
+                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
+                HttpResponseMessage response = await client.GetAsync("api/activity/");
+
+                List<Activity> la;
+
+
+
+                la = await response.Content.ReadAsAsync<List<Activity>>();
+
+
+
+                //if (response.IsSuccessStatusCode)
+                //{
+                    //Assert.AreEqual(la[0].description, "yolo Marck er en fag");
+                    
+                    
+                //}
+                
+            }
+        }
 
         [TestMethod]
         public async Task TestGetActivityController()
