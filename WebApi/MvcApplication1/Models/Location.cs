@@ -20,6 +20,15 @@ namespace MvcApplication1.Models
 
         public Location(int ID, String name, String address, int zipcode, String city)
         {
+            this.ID = ID;
+            this.name = name;
+            this.address = address;
+            this.zipcode = zipcode;
+            this.city = city;
+        }
+
+        public Location(String name, String address, int zipcode, String city)
+        {
             this.name = name;
             this.address = address;
             this.zipcode = zipcode;

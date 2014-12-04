@@ -44,16 +44,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMain.Designer.cs">
+      <DependentUpon>AdminMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateActivity.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateActivity.Designer.cs">
       <DependentUpon>CreateActivity.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateLocation.Designer.cs">
+      <DependentUpon>CreateLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Event.Designer.cs">
+      <DependentUpon>Event.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminMain.resx">
+      <DependentUpon>AdminMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateActivity.resx">
       <DependentUpon>CreateActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateLocation.resx">
+      <DependentUpon>CreateLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Event.resx">
+      <DependentUpon>Event.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

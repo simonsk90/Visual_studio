@@ -11,26 +11,22 @@ namespace MvcApplication1.Controllers
 {
     public class LocationController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<controller>/5
+        DBLocation dbl = new DBLocation();
+        // GET api/Location/
         public Location Get(int ID)
         {
-            DBLocation dbl = new DBLocation();
             return dbl.getLocationByID(ID);
         }
 
+
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Location location)
         {
+            dbl.addLocation(location);
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Location location)
         {
         }
 
