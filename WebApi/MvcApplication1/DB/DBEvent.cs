@@ -63,7 +63,7 @@ namespace MvcApplication1.DB
         public List<Event> getAllEvents()
         {
             List<Event> eList = new List<Event>();
-            string query = "SELECT * FROM ScrumEvent";
+            string query = "SELECT ID, eventDate, lecture, activityID, locationID FROM ScrumEvent";
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -74,9 +74,9 @@ namespace MvcApplication1.DB
                 int acivityID = 0;
                 int locationID = 0;
 
-                e.ID = Convert.ToInt32(dr["id"]);
+                e.ID = Convert.ToInt32(dr["ID"]);
                 e.date = Convert.ToDateTime(dr["eventDate"]);
-                e.lecturer = dr["lecturer"].ToString();
+                e.lecturer = dr["lecture"].ToString();
                 acivityID = Convert.ToInt32(dr["activityID"]);
                 locationID = Convert.ToInt32(dr["locationID"]);
                 e.acti = dba.getActivityByID(acivityID);

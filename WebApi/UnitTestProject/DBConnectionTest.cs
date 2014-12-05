@@ -59,7 +59,7 @@ namespace UnitTestProject
                 {
                     Activity a = await response.Content.ReadAsAsync<Activity>();
                     //Console.WriteLine("{0}\t${1}\t{2}", product.Name, product.Price, product.Category);
-                    Assert.AreEqual(a.description, "yolo Marck er en fag");
+                    Assert.AreEqual(a.description, "yolo Marck");
                 }
             }
         }
@@ -108,7 +108,6 @@ namespace UnitTestProject
         {
             DBActivity dba = new DBActivity();
             Activity a = dba.getActivityByID(2);
-            Console.WriteLine(a.title);
             Assert.AreNotEqual(a, null);
             
         }
@@ -118,7 +117,6 @@ namespace UnitTestProject
         {
             DBLocation dba = new DBLocation();
             Location a = dba.getLocationByID(2);
-            Console.WriteLine(a.name);
             Assert.AreNotEqual(a, null);
 
         }
