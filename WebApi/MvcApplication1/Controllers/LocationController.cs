@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,6 +17,11 @@ namespace MvcApplication1.Controllers
         public Location Get(int ID)
         {
             return dbl.getLocationByID(ID);
+        }
+
+        public IEnumerable<Location> Get()
+        {
+            return dbl.getAllLocations();
         }
 
 

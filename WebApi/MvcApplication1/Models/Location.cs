@@ -29,6 +29,7 @@ namespace MvcApplication1.Models
 
         public Location(String name, String address, int zipcode, String city)
         {
+
             this.name = name;
             this.address = address;
             this.zipcode = zipcode;
