@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Http;
+using System.Net.Http.Headers;
+
 
 namespace WindowsFormsApplication2
 {
@@ -43,6 +47,8 @@ namespace WindowsFormsApplication2
                     tagString = tagString + "," + s;
                 }
                 lblErrorMsg.Text = "Aktivitet oprettet";
+                Activity a = new Activity(title,description,tags);
+                addActivity(a);
             }
             else
             {
@@ -60,6 +66,16 @@ namespace WindowsFormsApplication2
                 }
             }
             return pass;
+        }
+
+        private async Task addActivity(Activity a)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:51938/");
+                var aa = new Activity() {title = a.title, description = a.description, tags = a.tags};
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Activity", aa);
+            }
         }
     
     }
