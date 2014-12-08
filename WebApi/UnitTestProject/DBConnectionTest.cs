@@ -109,7 +109,7 @@ namespace UnitTestProject
             DBActivity dba = new DBActivity();
             Activity a = dba.getActivityByID(2);
             Assert.AreNotEqual(a, null);
-            
+                
         }
 
         [TestMethod]
