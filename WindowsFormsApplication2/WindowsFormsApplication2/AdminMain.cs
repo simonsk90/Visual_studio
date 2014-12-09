@@ -31,7 +31,7 @@ namespace WindowsFormsApplication2
 
         private void buttonEventCreateEvent_Click(object sender, EventArgs e)
         {
-            Event newEvent = new Event();
+            CreateEvent newEvent = new CreateEvent();
             newEvent.Show();
         }
 

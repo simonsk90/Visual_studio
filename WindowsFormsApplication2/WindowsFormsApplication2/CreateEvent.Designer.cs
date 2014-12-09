@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication2
 {
-    partial class Event
+    partial class CreateEvent
     {
         /// <summary>
         /// Required designer variable.

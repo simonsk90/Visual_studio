@@ -1,54 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace WindowsFormsApplication2
 {
-    public partial class Event : Form
+    class Event
     {
+        public int ID { get; set; }
+        public DateTime date { get; set; }
+        public Location location { get; set; }
+        public String lecturer { get; set; }
+        public Activity acti { get; set; }
+        //private List<User> attendantsList = new List<User>();
+
         public Event()
         {
-            InitializeComponent();
-            dateTimePickerEvent.Format = DateTimePickerFormat.Custom;
-            dateTimePickerEvent.CustomFormat = " MMMM dd " + " kl: " + "HH:mm";
 
         }
 
-        private void onlyNumbers(object sender, KeyPressEventArgs e)
+        public Event(int ID, DateTime date, Location location, String lecturer, Activity acti)
         {
-            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+            this.ID = ID;
+            this.date = date;
+            this.location = location;
+            this.lecturer = lecturer;
+            this.acti = acti;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        public Event(DateTime date, Location location, String lecturer, Activity acti)
         {
-
+            this.date = date;
+            this.location = location;
+            this.lecturer = lecturer;
+            this.acti = acti;
         }
 
-        private void eventAdd_Click(object sender, EventArgs e)
-        {
-            if (textEventLecture.Text != "" &&
-                textEventAttendants.Text != "" && 
-                comboBoxEventActivity.SelectedItem != null && 
-                comboBoxEventLocation.SelectedItem != null)
-            {
-                //Add event to databse
+        //public List<User> getAttendantsList()
+        //{
+        //    return this.attendantsList;
+        //}
 
-                lblErrorMsg.Text = "Dit event er blevet oprettet";
-            }
-
-            else
-            {
-                lblErrorMsg.Text = "Udfyld alle felter for at fortsætte";
-            }
-        }
+        //public void addAttendant(User u)
+        //{
+        //    attendantsList.Add(u);
+        //}
     }
 }
