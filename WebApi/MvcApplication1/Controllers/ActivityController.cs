@@ -18,7 +18,7 @@ namespace MvcApplication1.Controllers
             return dba.getActivityByID(ID);
         }
 
-        public List<Activity> Get()
+        public IEnumerable<Activity> Get()
         {
             return dba.getAllActivities();
         }

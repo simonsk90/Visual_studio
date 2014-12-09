@@ -68,20 +68,24 @@ namespace MvcApplication1.DB
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
 
-            while (dr.HasRows)
+            if (dr.HasRows)
             {
-                Event e = new Event();
-                int acivityID = 0;
-                int locationID = 0;
+                while (dr.Read())
+                {
+                    Event e = new Event();
+                    int acivityID = 0;
+                    int locationID = 0;
 
-                e.ID = Convert.ToInt32(dr["ID"]);
-                e.date = Convert.ToDateTime(dr["eventDate"]);
-                e.lecturer = dr["lecture"].ToString();
-                acivityID = Convert.ToInt32(dr["activityID"]);
-                locationID = Convert.ToInt32(dr["locationID"]);
-                e.acti = dba.getActivityByID(acivityID);
-                e.location = dbl.getLocationByID(locationID);
-                eList.Add(e);
+                    e.ID = Convert.ToInt32(dr["ID"]);
+                    String date = dr["eventDate"].ToString();
+                    e.date = DateTime.ParseExact(date, @"dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    e.lecturer = dr["lecture"].ToString();
+                    acivityID = Convert.ToInt32(dr["activityID"]);
+                    locationID = Convert.ToInt32(dr["locationID"]);
+                    e.acti = dba.getActivityByID(acivityID);
+                    e.location = dbl.getLocationByID(locationID);
+                    eList.Add(e);
+                }
             }
 
             return eList;
