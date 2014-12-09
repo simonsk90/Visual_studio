@@ -77,13 +77,13 @@ namespace UnitTestProject
         }
 
         [TestMethod]
-        public async Task TestLocationController()
+        public async Task TestAddLocationController()
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:51938/");
 
-                var a = new Location() { ID = 322, name = "testName", address = "testAddress", zipcode = 9999, city = "testCity" };
+                var a = new Location() { name = "testNYYY", address = "testAddress", zipcode = 9999, city = "testCity" };
                 HttpResponseMessage response = await client.PostAsJsonAsync("api/Location", a);
             }
         }
