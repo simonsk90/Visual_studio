@@ -44,13 +44,18 @@ namespace MvcApplication1.DB
             Event e = new Event();
             int acivityID = 0;
             int locationID = 0;
-            while (dr.HasRows)
+
+            if (dr.HasRows)
             {
-                e.ID = Convert.ToInt32(dr["id"]);
-                e.date = Convert.ToDateTime(dr["eventDate"]);
-                e.lecturer = dr["lecturer"].ToString();
-                acivityID = Convert.ToInt32(dr["activityID"]);
-                locationID = Convert.ToInt32(dr["locationID"]);
+
+                while (dr.Read())
+                {
+                    e.ID = Convert.ToInt32(dr["id"]);
+                    e.date = Convert.ToDateTime(dr["eventDate"]);
+                    e.lecturer = dr["lecture"].ToString();
+                    acivityID = Convert.ToInt32(dr["activityID"]);
+                    locationID = Convert.ToInt32(dr["locationID"]);
+                }
             }
             Activity a = dba.getActivityByID(acivityID);
             Location l = dbl.getLocationByID(locationID);
@@ -78,7 +83,7 @@ namespace MvcApplication1.DB
 
                     e.ID = Convert.ToInt32(dr["ID"]);
                     String date = dr["eventDate"].ToString();
-                    e.date = DateTime.ParseExact(date, @"dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    e.date = DateTime.ParseExact(date, "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
                     e.lecturer = dr["lecture"].ToString();
                     acivityID = Convert.ToInt32(dr["activityID"]);
                     locationID = Convert.ToInt32(dr["locationID"]);
