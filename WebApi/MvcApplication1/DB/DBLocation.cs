@@ -56,11 +56,14 @@ namespace MvcApplication1.DB
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
 
-            while (dr.HasRows)
+            if (dr.HasRows)
             {
-                Location l = new Location(Convert.ToInt32(dr["ID"]), dr["name"].ToString(),
-                dr["address"].ToString(), Convert.ToInt32(dr["zipcode"]), dr["city"].ToString());
-                allLocations.Add(l);
+                while (dr.Read())
+                {
+                    Location l = new Location(Convert.ToInt32(dr["ID"]), dr["name"].ToString(),
+                    dr["address"].ToString(), Convert.ToInt32(dr["zipcode"]), dr["city"].ToString());
+                    allLocations.Add(l);
+                }
             }
             return allLocations;
         }
