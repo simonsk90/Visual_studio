@@ -181,3 +181,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+WindowsFormsApplication2/.nuget/NuGet.Config
+WindowsFormsApplication2/.nuget/NuGet.exe
+WindowsFormsApplication2/.nuget/NuGet.targets
