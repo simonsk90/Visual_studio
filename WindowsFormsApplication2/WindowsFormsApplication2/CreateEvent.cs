@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,8 +49,8 @@ namespace WindowsFormsApplication2
                 Activity a = (Activity)comboBoxEventActivity.SelectedItem;
                 String s = textEventLecture.Text;
                 Event eee = new Event(dateTimePickerEvent.Value, l, s, a);
-                addEvent(eee);
                 lblErrorMsg.Text = "Dit event er blevet oprettet";
+                addEvent(eee);
             }
 
             else
@@ -65,6 +66,10 @@ namespace WindowsFormsApplication2
                 client.BaseAddress = new Uri("http://localhost:51938/");
                 var ee = new Event() { date = e.date, location = e.location, lecturer = e.lecturer, acti = e.acti };
                 HttpResponseMessage response = await client.PostAsJsonAsync("api/Event", ee);
+                if (response.IsSuccessStatusCode)
+                {
+                    lblErrorMsg.Text = "Dit event er blevet oprettet";
+                }
             }
         }
 
@@ -92,11 +97,10 @@ namespace WindowsFormsApplication2
                 HttpResponseMessage response = await client.GetAsync("api/Activity");
                 aList = await response.Content.ReadAsAsync<List<Activity>>();
             }
-            Console.WriteLine(aList);
             BindingSource bda = new BindingSource();
             bda.DataSource = aList;
             comboBoxEventActivity.DataSource = bda.DataSource;
-            comboBoxEventLocation.DisplayMember = "title";
+            comboBoxEventActivity.DisplayMember = "title";
         }
 
     }

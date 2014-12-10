@@ -18,11 +18,13 @@ namespace MvcApplication1.DB
             string query = "INSERT INTO ScrumEvent (eventDate, lecture, activityID, locationID) VALUES (@eventDate, @lecture, @activityID, @locationID)";
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
-
-            cmd.Parameters.AddWithValue("@eventDate", e.date.ToString());
+            String date = e.date.ToString();
+            int aID = e.acti.ID;
+            int lID = e.location.ID;
+            cmd.Parameters.AddWithValue("@eventDate", date);
             cmd.Parameters.AddWithValue("@lecture", e.lecturer);
-            cmd.Parameters.AddWithValue("@activityID", e.acti.ID);
-            cmd.Parameters.AddWithValue("@locationID", e.location.ID);
+            cmd.Parameters.AddWithValue("@activityID", aID);
+            cmd.Parameters.AddWithValue("@locationID", lID);
 
             try
             {
