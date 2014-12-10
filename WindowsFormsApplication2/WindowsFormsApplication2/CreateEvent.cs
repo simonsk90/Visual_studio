@@ -19,8 +19,8 @@ namespace WindowsFormsApplication2
             InitializeComponent();
             dateTimePickerEvent.Format = DateTimePickerFormat.Custom;
             dateTimePickerEvent.CustomFormat = " MMMM dd " + " kl: " + "HH:mm";
-            getAllLocation();
-            comboBoxEventLocation.DataSource = getAllLocation();
+            MakeLocationList();
+            MakeActivityList();
         }
 
         private void onlyNumbers(object sender, KeyPressEventArgs e)
@@ -44,8 +44,11 @@ namespace WindowsFormsApplication2
                 comboBoxEventLocation.SelectedItem != null)
             {
                 //Add event to databse
-                //Event e = new Event(dateTimePickerEvent, ,textEventLecture.ToString(),);
-                //addEvent(e);
+                Location l = (Location)comboBoxEventLocation.SelectedItem;
+                Activity a = (Activity)comboBoxEventActivity.SelectedItem;
+                String s = textEventLecture.Text;
+                Event eee = new Event(dateTimePickerEvent.Value, l, s, a);
+                addEvent(eee);
                 lblErrorMsg.Text = "Dit event er blevet oprettet";
             }
 
@@ -60,25 +63,41 @@ namespace WindowsFormsApplication2
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:51938/");
-                var aa = new Event() { ID = e.ID, date = e.date, location = e.location, lecturer = e.lecturer, acti = e.acti };
-                HttpResponseMessage response = await client.PostAsJsonAsync("api/Activity", aa);
+                var ee = new Event() { date = e.date, location = e.location, lecturer = e.lecturer, acti = e.acti };
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Event", ee);
             }
         }
 
-        private async Task<List<Location>> getAllLocation()
+        private async Task MakeLocationList()
         {
             List<Location> locList = new List<Location>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:51938/");
                 HttpResponseMessage response = await client.GetAsync("api/Location");
-                if (response.IsSuccessStatusCode)
-                {
-                    locList = await response.Content.ReadAsAsync<List<Location>>();
-                }   
+                locList = await response.Content.ReadAsAsync<List<Location>>();
             }
-            return locList;
-
+            BindingSource bd = new BindingSource();
+            bd.DataSource = locList;
+            comboBoxEventLocation.DataSource = bd.DataSource;
+            comboBoxEventLocation.DisplayMember = "name";
         }
+
+        private async Task MakeActivityList()
+        {
+            List<Activity> aList = new List<Activity>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:51938/");
+                HttpResponseMessage response = await client.GetAsync("api/Activity");
+                aList = await response.Content.ReadAsAsync<List<Activity>>();
+            }
+            Console.WriteLine(aList);
+            BindingSource bda = new BindingSource();
+            bda.DataSource = aList;
+            comboBoxEventActivity.DataSource = bda.DataSource;
+            comboBoxEventLocation.DisplayMember = "title";
+        }
+
     }
 }

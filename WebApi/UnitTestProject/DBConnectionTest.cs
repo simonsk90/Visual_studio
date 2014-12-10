@@ -44,25 +44,25 @@ namespace UnitTestProject
             }
         }
 
-        [TestMethod]
-        public async Task TestGetActivityController()
-        {
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("http://localhost:51938/");
-                //client.DefaultRequestHeaders.Accept.Clear();
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //[TestMethod]
+        //public async Task TestGetActivityController()
+        //{
+        //    using (var client = new HttpClient())
+        //    {
+        //        client.BaseAddress = new Uri("http://localhost:51938/");
+        //        //client.DefaultRequestHeaders.Accept.Clear();
+        //        //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 
-                HttpResponseMessage response = await client.GetAsync("api/activity/2");
-                if (response.IsSuccessStatusCode)
-                {
-                    Activity a = await response.Content.ReadAsAsync<Activity>();
-                    //Console.WriteLine("{0}\t${1}\t{2}", product.Name, product.Price, product.Category);
-                    Assert.AreEqual(a.description, "yolo Marck");
-                }
-            }
-        }
+        //        HttpResponseMessage response = await client.GetAsync("api/activity/2");
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            Activity a = await response.Content.ReadAsAsync<Activity>();
+        //            //Console.WriteLine("{0}\t${1}\t{2}", product.Name, product.Price, product.Category);
+        //            Assert.AreEqual(a.description, "yolo Marck");
+        //        }
+        //    }
+        //}
 
         [TestMethod]
         public async Task TestAddActivityController()
@@ -130,22 +130,22 @@ namespace UnitTestProject
             //Console.WriteLine(e.lecturer + " lecturer og " + e.date + " date");
         }
 
-        //[TestMethod]
-        //public async Task TestAddEventController()
-        //{
-        //    DBActivity dba = new DBActivity();
-        //    DBLocation dbl = new DBLocation();
-        //    using (var client = new HttpClient())
-        //    {
-        //        client.BaseAddress = new Uri("http://localhost:51938/");
+        [TestMethod]
+        public async Task TestAddEventController()
+        {
+            DBActivity dba = new DBActivity();
+            DBLocation dbl = new DBLocation();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:51938/");
 
-        //        Location l = dbl.getLocationByID(1);
-        //        Activity a = dba.getActivityByID(2);
-        //        DateTime dt = new DateTime(1993, 2, 2, 4, 44, 7);
-        //        var e = new Event() { date = dt, location = l, lecturer = "marcks mor", acti = a };
-        //        HttpResponseMessage response = await client.PostAsJsonAsync("api/Event", e);
-        //    }
-        //}
+                Location l = dbl.getLocationByID(1);
+                Activity a = dba.getActivityByID(2);
+                DateTime dt = new DateTime(1993, 2, 2, 4, 44, 7);
+                var e = new Event() { date = dt, location = l, lecturer = "marcks far", acti = a };
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Event", e);
+            }
+        }
 
         //[TestMethod]
         //public void TestAddEventDB()
