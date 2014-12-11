@@ -140,7 +140,7 @@ namespace UnitTestProject
                 client.BaseAddress = new Uri("http://localhost:51938/");
 
                 Location l = dbl.getLocationByID(1);
-                Activity a = dba.getActivityByID(2);
+                Activity a = dba.getActivityByID(89);
                 DateTime dt = new DateTime(1993, 2, 2, 4, 44, 7);
                 var e = new Event() { date = dt, location = l, lecturer = "marcks far", acti = a };
                 HttpResponseMessage response = await client.PostAsJsonAsync("api/Event", e);
