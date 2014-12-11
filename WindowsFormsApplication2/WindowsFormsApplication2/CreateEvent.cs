@@ -49,6 +49,7 @@ namespace WindowsFormsApplication2
                 Activity a = (Activity)comboBoxEventActivity.SelectedItem;
                 String s = textEventLecture.Text;
                 Event eee = new Event(dateTimePickerEvent.Value, l, s, a);
+                DateTime hallo = dateTimePickerEvent.Value;
                 lblErrorMsg.Text = "Dit event er blevet oprettet";
                 addEvent(eee);
             }
@@ -64,7 +65,7 @@ namespace WindowsFormsApplication2
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:51938/");
-                var ee = new Event() { date = e.date, location = e.location, lecturer = e.lecturer, acti = e.acti };
+                var ee = new Event() { date = e.date, lecturer = e.lecturer, acti = e.acti, location = e.location };
                 HttpResponseMessage response = await client.PostAsJsonAsync("api/Event", ee);
                 if (response.IsSuccessStatusCode)
                 {
