@@ -85,7 +85,7 @@ namespace MvcApplication1.DB
 
                     e.ID = Convert.ToInt32(dr["ID"]);
                     String date = dr["eventDate"].ToString();
-                    e.date = DateTime.ParseExact(date, "dd-MM-yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                    e.date = Convert.ToDateTime(dr["eventDate"]);
                     e.lecturer = dr["lecture"].ToString();
                     acivityID = Convert.ToInt32(dr["activityID"]);
                     locationID = Convert.ToInt32(dr["locationID"]);

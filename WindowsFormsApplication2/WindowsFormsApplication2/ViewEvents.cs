@@ -22,7 +22,7 @@ namespace WindowsFormsApplication2
 
         private async void fillList()
         {
-            ListViewItem item1 = new ListViewItem("Something");
+            //ListViewItem item1 = new ListViewItem("Something");
            // item1.SubItems.Add("SubItem1a");
            // item1.SubItems.Add("SubItem1b");
            // listView1.Items.Add(item1);
