@@ -35,5 +35,11 @@ namespace WindowsFormsApplication2
             newEvent.Show();
         }
 
+        private void buttonViewEvents_Click(object sender, EventArgs e)
+        {
+            ViewEvents newViewEvents = new ViewEvents();
+            newViewEvents.Show();
+        }
+
     }
 }
