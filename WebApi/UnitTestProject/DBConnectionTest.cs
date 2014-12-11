@@ -36,7 +36,7 @@ namespace UnitTestProject
 
                 //if (response.IsSuccessStatusCode)
                 //{
-                    //Assert.AreEqual(la[0].description, "yolo Marck er en fag");
+                    //Assert.AreEqual(la[0].description, "yolo ");
                     
                     
                 //}
@@ -125,7 +125,7 @@ namespace UnitTestProject
         public void TestGetEvent()
         {
             //DBEvent dbe = new DBEvent();
-            //dbe.addEvent(new Event(new DateTime(), new Location("Hey", "fagvej", 8900, "YoBy"), "Marcks mor", new Activity(89,"Neeeej", "Blaaa","fucker,popcorn,#OgMinMaaaajd")));
+            //dbe.addEvent(new Event(new DateTime(), new Location("Hey", "fagvej", 8900, "YoBy"), "Marck", new Activity(89,"Neeeej", "Blaaa","fuer,popcorn,#OgMinMaaaajd")));
             //Event e = dbe.getEventByID(0);
             //Console.WriteLine(e.lecturer + " lecturer og " + e.date + " date");
         }
@@ -142,7 +142,7 @@ namespace UnitTestProject
                 Location l = dbl.getLocationByID(1);
                 Activity a = dba.getActivityByID(89);
                 DateTime dt = new DateTime(1993, 2, 2, 4, 44, 7);
-                var e = new Event() { date = dt, location = l, lecturer = "marcks far", acti = a };
+                var e = new Event() { date = dt, location = l, lecturer = "marck", acti = a };
                 HttpResponseMessage response = await client.PostAsJsonAsync("api/Event", e);
             }
         }
