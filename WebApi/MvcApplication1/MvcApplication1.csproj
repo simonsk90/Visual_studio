@@ -127,12 +127,14 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="DB\DBActivity.cs" />
     <Compile Include="DB\DBConnection.cs" />
     <Compile Include="DB\DBEvent.cs" />
     <Compile Include="DB\DBLocation.cs" />
+    <Compile Include="DB\DBUser.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

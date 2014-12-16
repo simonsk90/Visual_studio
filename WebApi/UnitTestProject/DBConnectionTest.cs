@@ -64,6 +64,20 @@ namespace UnitTestProject
         //    }
         //}
 
+
+        [TestMethod]
+        public async Task TestAddUserController()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:51938/");
+                DateTime dt = new DateTime(1993, 2, 2, 4, 44, 7);
+                var u = new User() { fName = "Bent", lName = "Kristensen", birthday = dt, email = "kurtdisco@webbyen.dk", password = "12345", ranking = 3 };
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/User", u);
+            }
+        }
+
+
         [TestMethod]
         public async Task TestAddActivityController()
         {
@@ -83,7 +97,7 @@ namespace UnitTestProject
             {
                 client.BaseAddress = new Uri("http://localhost:51938/");
 
-                var a = new Location() { name = "testNYYY", address = "testAddress", zipcode = 9999, city = "testCity" };
+                var a = new Location() { name = "testNYYYdfherhgerh", address = "testAddress", zipcode = 9999, city = "testCity" };
                 HttpResponseMessage response = await client.PostAsJsonAsync("api/Location", a);
             }
         }
