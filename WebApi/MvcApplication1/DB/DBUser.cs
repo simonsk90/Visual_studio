@@ -44,7 +44,24 @@ namespace MvcApplication1.DB
         public User getUserByName(string username, string password)
         {
             User u = new User();
-            string query = "SELECT * FROM ScrumUsers WHERE email = " + username + " AND password = " + password;
+            string query = "SELECT * FROM ScrumUsers WHERE email = '" + username + "' AND password = '" + password + "'";
+            SqlConnection con = dbc.GetConnection();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                u = new User(Convert.ToInt32(dr["ID"]), dr["fName"].ToString(),
+                dr["lName"].ToString(), Convert.ToDateTime(dr["birthday"]), dr["email"].ToString(),
+                dr["password"].ToString(), Convert.ToInt32(dr["ranking"]));
+            }
+            return u;
+        }
+
+        public User getUserByID(int ID)
+        {
+            User u = new User();
+            string query = "SELECT * FROM ScrumUsers WHERE ID = " + ID;
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();

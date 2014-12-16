@@ -13,33 +13,11 @@ namespace MvcApplication1.Controllers
     {
         DBUser dbu = new DBUser();  
 
-
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        // GET api/User/get/<username>/<password>
+        public User Get(String username, String password)
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody]User user)
-        {
-            dbu.addUser(user);
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            User u = dbu.getUserByName(username, password);
+            return u;
         }
     }
 }
