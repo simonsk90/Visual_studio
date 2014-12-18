@@ -64,7 +64,7 @@ namespace WindowsFormsApplication2
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:51938/");
+                client.BaseAddress = new Uri("http://42345.9220.ovh/");
                 var ee = new Event() { date = e.date, lecturer = e.lecturer, acti = e.acti, location = e.location };
                 HttpResponseMessage response = await client.PostAsJsonAsync("api/Event", ee);
                 if (response.IsSuccessStatusCode)
@@ -79,14 +79,14 @@ namespace WindowsFormsApplication2
             List<Location> locList = new List<Location>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:51938/");
+                client.BaseAddress = new Uri("http://42345.9220.ovh/");
                 HttpResponseMessage response = await client.GetAsync("api/Location");
                 locList = await response.Content.ReadAsAsync<List<Location>>();
             }
             BindingSource bd = new BindingSource();
             bd.DataSource = locList;
             comboBoxEventLocation.DataSource = bd.DataSource;
-            comboBoxEventLocation.DisplayMember = "name";
+            comboBoxEventLocation.DisplayMember = "address";
         }
 
         private async Task MakeActivityList()
@@ -94,7 +94,7 @@ namespace WindowsFormsApplication2
             List<Activity> aList = new List<Activity>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:51938/");
+                client.BaseAddress = new Uri("http://42345.9220.ovh/");
                 HttpResponseMessage response = await client.GetAsync("api/Activity");
                 aList = await response.Content.ReadAsAsync<List<Activity>>();
             }

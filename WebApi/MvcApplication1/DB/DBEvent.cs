@@ -53,7 +53,7 @@ namespace MvcApplication1.DB
                 while (dr.Read())
                 {
                     e.ID = Convert.ToInt32(dr["id"]);
-                    e.date = Convert.ToDateTime(dr["eventDate"]);
+                    e.date = DateTime.ParseExact(dr["eventDate"].ToString(), "dd/MM/yyyy HH-mm", null);
                     e.lecturer = dr["lecture"].ToString();
                     acivityID = Convert.ToInt32(dr["activityID"]);
                     locationID = Convert.ToInt32(dr["locationID"]);
@@ -85,7 +85,8 @@ namespace MvcApplication1.DB
 
                     e.ID = Convert.ToInt32(dr["ID"]);
                     String date = dr["eventDate"].ToString();
-                    e.date = Convert.ToDateTime(dr["eventDate"]);
+                    //e.date = DateTime.ParseExact(date, "dd/MM/yyyy HH-mm", null);
+                    e.date = new DateTime(DateTime.MaxValue.Ticks);
                     e.lecturer = dr["lecture"].ToString();
                     acivityID = Convert.ToInt32(dr["activityID"]);
                     locationID = Convert.ToInt32(dr["locationID"]);

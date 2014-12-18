@@ -52,7 +52,7 @@ namespace WindowsFormsApplication2
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:51938/");
+                client.BaseAddress = new Uri("http://42345.9220.ovh/");
                 var a = new Location() { name = l.name, address = l.address, zipCode = l.zipCode, city = l.city };
                 HttpResponseMessage response = await client.PostAsJsonAsync("api/Location", a);
             }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication2
@@ -42,10 +43,11 @@ namespace WindowsFormsApplication2
             List<Event> eList = new List<Event>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://localhost:51938/");
+                client.BaseAddress = new Uri("http://42345.9220.ovh/");
                 HttpResponseMessage response = await client.GetAsync("api/Event");
-                eList = await response.Content.ReadAsAsync<List<Event>>();
-                
+                String json = await response.Content.ReadAsAsync<String>();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                eList = js.Deserialize<List<Event>>(json);
             }
             return eList;
             //DataTable dtable = new DataTable();

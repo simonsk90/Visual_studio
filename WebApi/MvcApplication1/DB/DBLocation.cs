@@ -48,10 +48,10 @@ namespace MvcApplication1.DB
             return l;
         }
 
-        public List<Location> getAllLocations()
+        public IEnumerable<Location> getAllLocations()
         {
             List<Location> allLocations = new List<Location>();
-            string query = "SELECT * FROM ScrumLocation";
+            string query = "SELECT ID, name, address, zipcode, city FROM ScrumLocation";
             SqlConnection con = dbc.GetConnection();
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
